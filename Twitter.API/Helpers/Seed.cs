@@ -30,7 +30,7 @@ namespace Twitter.API.Helpers
         {
             if (!await roleManager.Roles.AnyAsync())
             {
-                foreach (var role in Enum.GetValues(typeof(Roles)))
+                foreach (var role in Enum.GetNames(typeof(Roles)))
                 {
                     var result = await roleManager.CreateAsync(new IdentityRole(role));
                     if (!result.Succeeded)

@@ -36,7 +36,7 @@ namespace Twitter.Business.DTOs.AuthDtos
                 RuleFor(x => x.Password).NotEmpty()
                     .NotNull()
                     .Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){6,}$")
-                    .WithMessage("Password must be 6 chars long & contain at least 1 Capital letter  ");
+                    .WithMessage("Password must be 6 chars long & contain at least 1 Capital letter");
                 RuleFor(x => x.Email).NotEmpty()
                     .NotNull()
                     .EmailAddress();

@@ -57,13 +57,21 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSeedData();
+
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
+    });
 }
 
 app.UseHttpsRedirection();
- app.UseSeedData();
-            
+app.Use(async (context, n) =>
+{
+    var a = context.Connection.RemoteIpAddress;
+    await n();
+});
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

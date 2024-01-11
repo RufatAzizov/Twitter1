@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Twitter.Business.DTOs.AuthDtos;
+using Twitter.Core.Entities;
 
-namespace Twitter.Business.Services.Interfaces
+namespace Twitter.Business.ExternalServices.Interfaces
 {
-    public interface IAuthService
+    public interface ITokenService
     {
-        Task<TokenDto> Login(LoginDto dto);
+        TokenDto CreateToken(AppUser user);
+    
     }
-} 
+}

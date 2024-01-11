@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Twitter.Business.DTOs.TopicDtos;
 using Twitter.Business.Exceptions.Blog;
 using Twitter.Business.Exceptions.Topic;
 using Twitter.Business.Repositories.Interfaces;
 using Twitter.Business.Services.Interfaces;
+using Twitter.Core.Enums;
 
 namespace Twitter.Controllers
 {
@@ -35,6 +37,7 @@ namespace Twitter.Controllers
                 return Problem(ex.Message);
             }
         }
+        [Authorize(Roles = nameof(Roles.Admin))]
         [HttpPost]
         public async Task<IActionResult> Post(TopicCreateDto dto)
         {
