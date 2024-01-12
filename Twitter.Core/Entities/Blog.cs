@@ -22,6 +22,13 @@ namespace Twitter.Core.Entities
 
         public string Title { get; set; }
 
+        public string AppUserId { get; set; }
+
+        public AppUser AppUser { get; set; }
+
+        //public ICollection<PostReaction> Reactions { get; set; }
+        public ICollection<Comments> Comments { get; set; }
+
         public ICollection<Files> Files { get; set; }
         public IEnumerable<BlogTopic> BlogTopics { get; set; }
     }

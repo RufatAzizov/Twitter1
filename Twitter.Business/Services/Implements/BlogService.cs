@@ -54,21 +54,21 @@ namespace Twitter.Business.Services.Implements
             await _repo.SaveAsync();
         }
 
-        //public async Task RemoveAsync(int id)
-        //{
-        //    var blog = await _checkId(id);
-        //    _repo.Remove(blog);
-        //    await _repo.SaveAsync();
-        //}
-
-        public async Task Delete(int id)
+        public async Task RemoveAsync(int id)
         {
-            var data = await _repo.GetByIdAsync(id, false);
-            if (data == null) throw new NotFoundException<Post>();
-            if (data.AppUserId != UserId) throw new Exception();
-            _repo.Remove(data);
+            var blog = await _checkId(id);
+            _repo.Remove(blog);
             await _repo.SaveAsync();
         }
+
+        //public async Task Delete(int id)
+        //{
+        //    var data = await _repo.GetByIdAsync(id, false);
+        //    if (data == null) throw new NotFoundException<Post>();
+        //    if (data.AppUserId != UserId) throw new Exception();
+        //    _repo.Remove(data);
+        //    await _repo.SaveAsync();
+        //}
         public Task SoftDelete(int id)
         {
             throw new NotImplementedException();
@@ -80,6 +80,8 @@ namespace Twitter.Business.Services.Implements
             if (data == null) throw new NotFoundException<Topic>();
             return data;
         }
-    }
 
+
+
+    }
 }
